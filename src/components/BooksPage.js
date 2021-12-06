@@ -22,7 +22,7 @@ const BooksPage = () => {
 
   return (
     <div>
-      <h1> Books </h1>
+      <h1> Awesome Books </h1>
       <ul>
         {bookList.map((book) => <Book key={book.id} book={book} />)}
       </ul>
