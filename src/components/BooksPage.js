@@ -7,16 +7,16 @@ const BooksPage = () => {
   const dispatch = useDispatch();
   const submitForm = (e) => {
     e.preventDefault();
-    const title = e.target.querySelector('#input-title');
-    const author = e.target.querySelector('#input-author');
-    const data = {
+    const title = e.target.querySelector('#title');
+    const author = e.target.querySelector('#author');
+    const newBook = {
       id: uuidv4(),
       title: title.value,
       author: author.value,
     };
     title.value = '';
     author.value = '';
-    dispatch(addBook(data));
+    dispatch(addBook(newBook));
   };
   const bookList = useSelector((state) => state.books);
 
@@ -27,8 +27,8 @@ const BooksPage = () => {
         {bookList.map((book) => <Book key={book.id} book={book} />)}
       </ul>
       <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-        <input id="input-title" placeholder="Book Title" />
-        <input id="input-author" placeholder="Book Author" />
+        <input id="title" placeholder="Book Title" />
+        <input id="author" placeholder="Book Author" />
         <button type="submit"> Add Book </button>
       </form>
     </div>
