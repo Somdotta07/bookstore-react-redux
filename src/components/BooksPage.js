@@ -1,22 +1,22 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Book from './Book';
-import { addBook } from '../redux/books/book';
+import { addBooks } from '../redux/books/book';
 
 const BooksPage = () => {
   const dispatch = useDispatch();
   const submitForm = (e) => {
     e.preventDefault();
     const title = e.target.querySelector('#title');
-    const author = e.target.querySelector('#author');
+    const category = e.target.querySelector('#category');
     const newBook = {
       id: uuidv4(),
       title: title.value,
-      author: author.value,
+      category: category.value,
     };
     title.value = '';
-    author.value = '';
-    dispatch(addBook(newBook));
+    category.value = '';
+    dispatch(addBooks(newBook));
   };
   const bookList = useSelector((state) => state.books);
 
@@ -24,11 +24,11 @@ const BooksPage = () => {
     <div>
       <h1> Awesome Books </h1>
       <ul>
-        {bookList.map((book) => <Book key={book.id} book={book} />)}
+        {bookList.map((book) => <Book key={book.item_id} book={book} />)}
       </ul>
       <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-        <input id="title" placeholder="Book Title" />
-        <input id="author" placeholder="Book Author" />
+        <input id="title" placeholder="Name" />
+        <input id="category" placeholder="Category" />
         <button type="submit"> Add Book </button>
       </form>
     </div>
