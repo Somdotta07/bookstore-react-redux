@@ -10,7 +10,7 @@ const BooksPage = () => {
     const title = e.target.querySelector('#title');
     const category = e.target.querySelector('#category');
     const newBook = {
-      id: uuidv4(),
+      item_id: uuidv4(),
       title: title.value,
       category: category.value,
     };

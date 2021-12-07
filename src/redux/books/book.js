@@ -15,16 +15,17 @@ const bookSlice = createSlice(
     },
   },
 );
+
 // Fetch data from API
 const fetchBooks = async (dispatch) => {
   const res = await fetch(appUrl);
-  const bookObj = await res.text();
+  const bookObj = await res.json();
   const bookList = Object.entries(bookObj).map(([id, [book]]) => ({
     item_id: id,
     title: book.title,
     category: book.category,
   }));
-  dispatch({ type: 'book/fetchBooks', payload: bookList });
+  dispatch({ type: 'books/fetchBooks', payload: bookList });
 };
 // Add data to our App
 const addBooks = (book) => {
@@ -38,7 +39,7 @@ const addBooks = (book) => {
     });
     const msg = res;
     if (msg.status) {
-      dispatch({ type: 'book/addBooks', payload: book });
+      dispatch({ type: 'books/addBooks', payload: book });
     }
   };
   return addBookThunk;
@@ -54,7 +55,7 @@ const deleteBook = (id) => {
     });
     const msg = res;
     if (msg.status) {
-      dispatch({ type: 'book/deleteBook', payload: id });
+      dispatch({ type: 'books/deleteBook', payload: id });
     }
   };
   return deleteBookThunk;

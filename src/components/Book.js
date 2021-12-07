@@ -11,7 +11,7 @@ const Book = (props) => {
         {` ${book.title} `}
       </span>
       <span>
-        {`by ${book.category}`}
+        {`${book.category}`}
       </span>
       <button type="button" onClick={() => dispatch(deleteBook(book.item_id))}>
         Remove Book
@@ -22,7 +22,7 @@ const Book = (props) => {
 
 Book.propTypes = {
   book: PropTypes.shape({
-    item_id: PropTypes.number,
+    item_id: PropTypes.string,
     title: PropTypes.string,
     category: PropTypes.string,
   }).isRequired,
