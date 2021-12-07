@@ -1,4 +1,7 @@
 import { createSlice, current } from '@reduxjs/toolkit';
+const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
+const apiKey = 'wAt6K5UCAIHzcWrwmyoA';
+const appUrl = `${baseUrl}/apps/${apiKey}/books`;
 
 const bookSlice = createSlice(
   {
