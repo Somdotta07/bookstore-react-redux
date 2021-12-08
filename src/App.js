@@ -4,23 +4,16 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link,
 } from 'react-router-dom';
 import BooksPage from './components/BooksPage';
 import CategoriesPage from './components/CategoriesPage';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <Router>
       <header>
-        <nav>
-          <h1>Awesome Online Bookstore</h1>
-          <div className="nav-links">
-            <Link to="/">Book</Link>
-            <div />
-            <Link to="/categories">Categories</Link>
-          </div>
-        </nav>
+        <NavBar />
       </header>
       <Routes>
         <Route path="/" element={<BooksPage />} />
