@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import Book from './Book';
-import { addBooks } from '../redux/books/book';
+import { addBooktoStore } from '../redux/books/book';
 
 const BooksPage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const BooksPage = () => {
     };
     title.value = '';
     category.value = '';
-    dispatch(addBooks(newBook));
+    dispatch(addBooktoStore(newBook));
   };
   const bookList = useSelector((state) => state.books);
 
@@ -27,7 +27,7 @@ const BooksPage = () => {
         {bookList.map((book) => <Book key={book.item_id} book={book} />)}
       </ul>
       <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-        <input id="title" placeholder="Name" />
+        <input id="title" placeholder="Book Name" />
         <input id="category" placeholder="Category" />
         <button type="submit"> Add Book </button>
       </form>

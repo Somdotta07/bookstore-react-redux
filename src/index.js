@@ -7,7 +7,6 @@ import store from './redux/configureStore';
 import { fetchBooks } from './redux/books/book';
 
 store.dispatch(fetchBooks);
-
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

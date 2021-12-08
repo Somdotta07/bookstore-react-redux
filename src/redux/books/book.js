@@ -1,4 +1,5 @@
 import { createSlice, current } from '@reduxjs/toolkit';
+import { v4 as uuidv4 } from 'uuid';
 
 const baseUrl = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi';
 const apiKey = 'av9kWU1C4HkPZEQJTJP0';
@@ -10,56 +11,59 @@ const bookSlice = createSlice(
     initialState: [],
     reducers: {
       addBook: (state, action) => [...current(state), { ...action.payload }],
-      removeBook: (state, action) => current(state).filter((book) => book.id !== action.payload),
+      // eslint-disable-next-line max-len
+      removeBook: (state, action) => current(state).filter((book) => book.item_id !== action.payload),
       fetchBooks: (state, action) => action.payload,
     },
   },
 );
 
-// Fetch data from API
-const fetchBooks = async (dispatch) => {
-  const res = await fetch(appUrl);
-  const bookObj = await res.json();
-  const bookList = Object.entries(bookObj).map(([id, [book]]) => ({
-    item_id: id,
-    title: book.title,
-    category: book.category,
-  }));
-  dispatch({ type: 'books/fetchBooks', payload: bookList });
-};
-// Add data to our App
-const addBooks = (book) => {
-  const addBookThunk = async (dispatch) => {
-    const res = await fetch(appUrl, {
-      method: 'POST',
+const delBook = (id) => {
+  const delBookThunk = async (dispatch) => {
+    const response = await fetch(`${appUrl}/${id}`, {
+      method: 'delete',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(book),
     });
-    const msg = res;
+    const msg = await response;
     if (msg.status) {
-      dispatch({ type: 'books/addBooks', payload: book });
+      dispatch({ type: 'books/removeBook', payload: id });
+    }
+  };
+  return delBookThunk;
+};
+
+const addBooktoStore = (book) => {
+  const newBook = { item_id: uuidv4(), ...book };
+  const addBookThunk = async (dispatch) => {
+    const response = await fetch(appUrl, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newBook),
+    });
+    const msg = await response;
+    if (msg.status) {
+      dispatch({ type: 'books/addBook', payload: newBook });
     }
   };
   return addBookThunk;
 };
-// Remove data from App
-const deleteBook = (id) => {
-  const deleteBookThunk = async (dispatch) => {
-    const res = await fetch(`${appUrl}/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-    const msg = res;
-    if (msg.status) {
-      dispatch({ type: 'books/deleteBook', payload: id });
+
+const fetchBooks = async (dispatch) => {
+  const response = await fetch(appUrl);
+  const books = await response.json();
+  const bookList = Object.entries(books).map(([id, [book]]) => (
+    {
+      item_id: id,
+      title: book.title,
+      category: book.category,
     }
-  };
-  return deleteBookThunk;
+  ));
+  dispatch({ type: 'book/fetchBooks', payload: bookList });
 };
 
-export { addBooks, deleteBook, fetchBooks };
+export { addBooktoStore, delBook, fetchBooks };
 export default bookSlice.reducer;
