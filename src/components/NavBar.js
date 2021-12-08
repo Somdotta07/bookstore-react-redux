@@ -7,6 +7,7 @@ export default function NavBar() {
       <div className="nav-item">
         <Link to="/"><li>BOOKS</li></Link>
         <Link to="/categories"><li>CATEGORIES</li></Link>
+        {/* <Link to="/"><li className="oval">Profile</li></Link> */}
       </div>
     </nav>
   );

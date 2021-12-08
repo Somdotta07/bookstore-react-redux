@@ -16,11 +16,11 @@ const Book = (props) => {
         </span>
       </div>
       <div className="btn-sec">
-        <button type="button"> Comments </button>
-        <button type="button" onClick={() => dispatch(deleteBook(book.item_id))}>
-          Remove Book
+        <button type="button" className="btn-c"> Comments </button>
+        <button type="button" className="btn-r" onClick={() => dispatch(deleteBook(book.item_id))}>
+          Remove
         </button>
-        <button type="button"> Edit </button>
+        <button type="button" className="btn-e"> Edit </button>
       </div>
     </li>
   );
