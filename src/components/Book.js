@@ -1,7 +1,6 @@
-/* eslint-disable linebreak-style */
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import { delBook } from '../redux/books/book';
+import { deleteBook } from '../redux/books/book';
 
 const Book = (props) => {
   const { book } = props;
@@ -14,7 +13,7 @@ const Book = (props) => {
       <span>
         {` ${book.category}`}
       </span>
-      <button type="button" onClick={() => dispatch(delBook(book.item_id))}>
+      <button type="button" onClick={() => dispatch(deleteBook(book.item_id))}>
         Remove Book
       </button>
     </li>
