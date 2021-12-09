@@ -65,9 +65,8 @@ nav{
 .oval {
   width: 2.813rem;
   height: 2.813rem;
-  margin: 0 0 0 41.5rem;
-  padding: 0.875rem;
-  border: solid 1px #e8e8e8;
+  margin: 0 1.125rem 0 45.5rem;
+  padding: 1.175rem;
 }
 
 .main-c {
@@ -81,7 +80,7 @@ nav{
 .line {
   width: 85rem;
   margin: 2.313rem 9.15rem 0;
-  border: solid 1px #e8e8e8;
+  border: solid 0.5px #e8e8e8;
 }
 
 .book-sec {
@@ -101,7 +100,7 @@ nav{
 }
 
 .book-cat {
-  width: 4.313rem;
+  width: 10.313rem;
   height: 1.125rem;
   margin: 0 1.188rem 0 0;
   opacity: 0.5;
@@ -112,9 +111,9 @@ nav{
 }
 
 .book-name {
-  width: 12.313rem;
+  width: 80.313rem;
   height: 1.813rem;
-  margin: 0.188rem 20.188rem 0 0;
+  margin: 1.188rem 20.188rem 0 0;
   font-family: 'Roboto Slab', serif;
   font-size: 1.375rem;
   font-weight: 900;
@@ -159,7 +158,7 @@ nav{
 }
 
 h3 {
-  width: 10.875rem;
+  width: 14.875rem;
   height: 1.5rem;
   margin: .213rem 32.75rem .188rem 0.1rem;
   font-size: 1.25rem;
