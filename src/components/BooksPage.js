@@ -28,7 +28,7 @@ const BooksPage = () => {
       <div className="add-book">
         <h3>ADD NEW BOOK</h3>
         <form id="add-book-form" onSubmit={(e) => submitForm(e)}>
-          <input id="title" placeholder="Book Name" />
+          <input id="title" placeholder="Book title" />
           <input id="category" placeholder="Category" />
           <button type="submit" className="submit-btn"> Add Book </button>
         </form>

@@ -5,8 +5,8 @@ export default function NavBar() {
     <nav className="nav">
       <h1 className="logo">Bookstore CMS</h1>
       <div className="nav-item">
-        <Link to="/"><li>BOOKS</li></Link>
-        <Link to="/categories"><li>CATEGORIES</li></Link>
+        <Link to="/"><li className="nav-b">BOOKS</li></Link>
+        <Link to="/categories"><li className="nav-c">CATEGORIES</li></Link>
         {/* <Link to="/"><li className="oval">Profile</li></Link> */}
       </div>
     </nav>
