@@ -17,9 +17,11 @@ const Book = (props) => {
       </div>
       <div className="btn-sec">
         <button type="button" className="btn-c"> Comments </button>
+        <div className="line-2" />
         <button type="button" className="btn-r" onClick={() => dispatch(deleteBook(book.item_id))}>
           Remove
         </button>
+        <div className="line-2" />
         <button type="button" className="btn-e"> Edit </button>
       </div>
     </li>
